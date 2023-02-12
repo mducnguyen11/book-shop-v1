@@ -1,1 +1,3 @@
-hello anh em
+Chạy database :
+mở nuget package console
+chạy lệnh : update-database
