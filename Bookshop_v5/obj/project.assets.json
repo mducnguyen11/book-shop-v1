@@ -10197,11 +10197,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\Bookshop_v5.csproj",
+      "projectUniqueName": "D:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\Bookshop_v5.csproj",
       "projectName": "Bookshop_v5",
-      "projectPath": "D:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\Bookshop_v5.csproj",
+      "projectPath": "D:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\Bookshop_v5.csproj",
       "packagesPath": "C:\\Users\\Duc Nguyen Minh\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\obj\\",
+      "outputPath": "D:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Duc Nguyen Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",

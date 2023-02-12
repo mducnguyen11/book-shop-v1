@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l3kVV+PQMW/Fy01Bg21V0FRRKlZ1FnNnqzk/6icwudUGWzppbdWSk/cFSRJ7yEuSIw0w/2qq6VGhY/K4VMjR2A==",
+  "dgSpecHash": "N5+Bm+xtFuelcGn2E9zb7t7hGJtQL/26QPoSk1LdDcceMASGh1H7vQRPbnjAaCOMLGCuN7KY7ICImCbLI4N0hg==",
   "success": true,
-  "projectFilePath": "d:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\Bookshop_v5.csproj",
+  "projectFilePath": "d:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\Bookshop_v5.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Duc Nguyen Minh\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Duc Nguyen Minh\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
