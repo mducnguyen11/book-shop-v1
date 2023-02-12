@@ -14,5 +14,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  width: 100%;
+  max-width: 1600px;
+  margin : auto;
 }
