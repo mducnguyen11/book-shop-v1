@@ -1,4 +1,4 @@
 ASP.net core project !!!
-Chạy database :
+Cách chạy database :
 mở nuget package console
 chạy lệnh : update-database
