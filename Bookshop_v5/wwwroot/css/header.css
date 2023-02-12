@@ -1,0 +1,37 @@
+﻿body {
+}
+
+.header{
+    margin: 15px;
+}
+
+.header-center{
+    gap: 15px;
+}
+.header-item{
+   
+    font-size: 16px;
+}
+
+.header-item a {
+        text-decoration: none;
+        color: #000000;
+}
+
+.header-item a:hover {
+        
+        color: orangered;
+}
+.header-left{
+    width: 20%;
+}
+
+.header-left img {
+    height: 42px;
+    width: auto;
+}
+
+.header-right {
+    width: 20%;
+    gap: 15px;
+}

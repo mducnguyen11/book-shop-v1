@@ -6,28 +6,33 @@
     <title>@ViewData["Title"] - Bookshop_v5</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Bookshop_v5.styles.css" asp-append-version="true" />
+    @RenderSection("styles", required: false)
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 </head>
 <body>    
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">           
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="~/Home/Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/Test/Index">Test</a>
-                    </li>          
-                </ul>        
+   <div class=" header d-flex justify-content-between align-items-center">
+       <div class="header-item header-left">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPVvMV88ozDSWFkle7Yk_jkIX3SPXzvhRAAXW1yt-Q&s" />
+       </div>      
+            <div class=" header-item header-center d-flex justify-content-center align-items-center">
+                <a href="/Home/Index">Home</a>
+            <a href="/Home/Index">Books</a>
+            <a href="/Home/Index">About us</a>
+            <a href="/Home/Index">Contact</a> 
+        </div>     
+            <div class=" header-item header-right d-flex justify-content-end align-items-center">
+                <a href="/Home/Index">Đăng nhập</a>   
+                <a href="/Home/Index">Đăng ký</a>
             </div>
         </div>
-    </nav>
-    <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    <footer>
+        Footer
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

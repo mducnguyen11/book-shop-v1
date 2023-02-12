@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\Bookshop_v5.csproj": {}
+    "d:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\Bookshop_v5.csproj": {}
   },
   "projects": {
-    "d:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\Bookshop_v5.csproj": {
+    "d:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\Bookshop_v5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\Bookshop_v5.csproj",
+        "projectUniqueName": "d:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\Bookshop_v5.csproj",
         "projectName": "Bookshop_v5",
-        "projectPath": "d:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\Bookshop_v5.csproj",
+        "projectPath": "d:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\Bookshop_v5.csproj",
         "packagesPath": "C:\\Users\\Duc Nguyen Minh\\.nuget\\packages\\",
-        "outputPath": "d:\\Projects\\.Net\\Bookshop_v5\\Bookshop_v5\\obj\\",
+        "outputPath": "d:\\Projects\\.Net\\book-shop-v1\\Bookshop_v5\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Duc Nguyen Minh\\AppData\\Roaming\\NuGet\\NuGet.Config",
