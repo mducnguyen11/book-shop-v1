@@ -4,7 +4,7 @@ namespace Bookshop_v5.Models.Domain
 {
     public class User : IdentityUser
     {
-        public string Nane { get; set; }
+        public string Name { get; set; }
 
         public string Gender { get; set; }
 
@@ -16,6 +16,11 @@ namespace Bookshop_v5.Models.Domain
 
         public ICollection<Order> Orders { get; set; }
 
+        public User()
+        {
+            Cart = new Cart();
+            Orders = new List<Order>();
+        }
 
     }
 }
