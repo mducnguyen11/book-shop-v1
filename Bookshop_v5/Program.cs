@@ -1,4 +1,6 @@
+using Bookshop_v5.Interfaces;
 using Bookshop_v5.Models.Domain;
+using Bookshop_v5.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUserAuthServices, UserAuthenticationService>();
+
 
 // Connect Db
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbconection")));

@@ -16,8 +16,7 @@ namespace Bookshop_v5.Controllers
         public IActionResult Index()
         {
             return View();
-        }  
-
+        }
         
     }
 }

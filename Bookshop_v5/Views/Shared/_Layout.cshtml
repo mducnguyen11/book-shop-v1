@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string username = User.Identity.Name;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,13 +22,24 @@
             <div class=" header-item header-center d-flex justify-content-center align-items-center">
                 <a href="/Home/Index">Home</a>
             <a href="/Home/Index">Books</a>
-            <a href="/Home/Index">About us</a>
+            <a href="/Home/AboutUs">About us</a>
             <a href="/Home/Index">Contact</a>
             <a href="/Genre/Index">Genre List</a>
+            <a href="/Auth/Register">Init Admin User</a>
         </div>     
             <div class=" header-item header-right d-flex justify-content-end align-items-center">
-                <a href="/Home/Index">Đăng nhập</a>   
-                <a href="/Home/Index">Đăng ký</a>
+            @if (string.IsNullOrEmpty(username))
+            {
+                <a href="/Auth/Login">Đăng nhập</a>
+                <a href="/Auth/Register">Đăng ký</a>
+            }
+            else
+            {
+                <a href="/Auth/Login">Cart</a>
+                <a href="/Auth/Register">@username</a>
+                <a href="/Auth/Logout">Log out</a>
+            }
+           
             </div>
         </div>
         <main role="main" class="pb-3">
