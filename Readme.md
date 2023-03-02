@@ -5,3 +5,4 @@ chạy lệnh :add-migration update
 chạy lệnh :update-database
 
 Done
+
