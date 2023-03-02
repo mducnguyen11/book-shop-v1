@@ -1,0 +1,13 @@
+﻿@using Bookshop_v5.Models.Domain;
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<h1>Genres</h1>
+
+<ul>
+    @foreach (var genre in Model)
+    {
+        <li>@genre.Name</li>
+    }
+</ul>
