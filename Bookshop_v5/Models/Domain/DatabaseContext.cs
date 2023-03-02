@@ -13,7 +13,19 @@ namespace Bookshop_v5.Models.Domain
         {
         }
 
-       // public DbSet<Genre> Genre { get; set; }
+        public DbSet<Genre> Genre { get; set; }
+
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //    {
+        //    base.OnModelCreating(modelBuilder);
+
+
+        //SeedData.SeedGenres(this);
+        //  }
+
+
+
+
 
     }
 }
