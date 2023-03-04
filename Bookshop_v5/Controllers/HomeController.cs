@@ -17,6 +17,11 @@ namespace Bookshop_v5.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
     }
 }
