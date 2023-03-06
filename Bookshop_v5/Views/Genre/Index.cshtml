@@ -8,6 +8,6 @@
 <ul>
     @foreach (var genre in Model)
     {
-        <li>@genre.Name</li>
+        <li><a asp-controller="Genre" asp-action="Details" asp-route-id="@genre.Id">@genre.Name</a></li>
     }
 </ul>

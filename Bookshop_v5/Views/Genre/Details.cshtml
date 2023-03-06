@@ -1,0 +1,27 @@
+﻿@model Bookshop_v5.Models.Domain.Genre
+
+<h2>Details for Genre: @Model.Name</h2>
+
+<ul>
+    <li>Id: @Model.Id</li>
+    <li>Name: @Model.Name</li>
+</ul>
+<h6>Book : @Model.Books.Count</h6>
+@foreach (var book in Model.Books)
+{
+    <li>@book.Name</li>
+}
+
+
+
+
+
+<a asp-controller="Genre" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<div></div>
+<div>
+    <form method="post" action="@Url.Action("Delete", "Genre", new { id = Model.Id })">
+        @Html.AntiForgeryToken()
+        <button type="submit">Delete Genre</button>
+    </form>
+</div>
+<a asp-action="Index">Back to list</a>
