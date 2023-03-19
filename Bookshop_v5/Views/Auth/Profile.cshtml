@@ -1,0 +1,11 @@
+﻿@model Bookshop_v5.Models.DTO.ProfileModel
+
+
+<h1>@Model.Name's Profile</h1>
+
+<p><strong>Email:</strong> @Model.Email</p>
+<p><strong>Gender:</strong> @Model.Gender</p>
+<p><strong>Address:</strong> @Model.Address</p>
+<p><strong>Birthday:</strong> @Model.Birthday.ToShortDateString()</p>
+
+<a href="/Auth/EditProfile">Edit</a>
