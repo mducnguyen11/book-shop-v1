@@ -2,6 +2,7 @@
 using Bookshop_v5.Models.Domain;
 using Bookshop_v5.Models.DTO;
 using Microsoft.AspNetCore.Identity;
+using System.Diagnostics;
 using System.Security.Claims;
 
 namespace Bookshop_v5.Services
@@ -20,7 +21,7 @@ namespace Bookshop_v5.Services
 
         }
 
-        public async Task<Status> RegisterAsync(RegistrationModel model)
+        public async Task<Status> RegisterAsync(RegistrationModel model, DatabaseContext context)
         {
             var status = new Status();
             var userExists = await userManager.FindByNameAsync(model.Username);
@@ -30,6 +31,12 @@ namespace Bookshop_v5.Services
                 status.Message = "User already exist";
                 return status;
             }
+            Cart ccx = new Cart();
+            context.Cart.Add(ccx);
+            await context.SaveChangesAsync();
+            Debug.WriteLine("-----------------------------");
+            Debug.WriteLine(ccx.ToString());
+            int CartId = ccx.Id;
             User user = new User()
             {
                 Email = model.Email,
@@ -39,15 +46,18 @@ namespace Bookshop_v5.Services
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
                 Gender = model.Gender,
-                Address= model.Address,
-                Birthday= model.Birthday,   
+                Address = model.Address,
+                Birthday = model.Birthday,
+                CartId = CartId
             };
+
+
             var result = await userManager.CreateAsync(user, model.Password);
+
             if (!result.Succeeded)
             {
                 status.StatusCode = 0;
                 string cc = "";
-                
 
                 foreach (var error in result.Errors)
                 {

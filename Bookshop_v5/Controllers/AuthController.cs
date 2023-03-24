@@ -58,7 +58,7 @@ namespace Bookshop_v5.Controllers
                 Gender ="Male"
             };
             // if you want to register with user , Change Role="User"
-            var result = await authService.RegisterAsync(model);
+            var result = await authService.RegisterAsync(model, _context);
             return Ok(result.Message);
         }
 
@@ -126,7 +126,7 @@ namespace Bookshop_v5.Controllers
             user.Name = model.Name;
             user.Gender = model.Gender;
             user.Address = model.Address;
-            user.Birthday = model.Birthday;
+            user.Birthday = model.Birthday;                 
 
             _context.Update(user);
             await _context.SaveChangesAsync();
