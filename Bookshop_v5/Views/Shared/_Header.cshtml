@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
-                    <a href="index.html" class="site-brand">
+                    <a href="/Home/Index" class="site-brand">
                         <img src="~/image/logo.png" alt="">
                     </a>
                 </div>
@@ -26,29 +26,18 @@
                     <div class="main-navigation flex-lg-right">
                         <ul class="main-menu menu-right ">
                             <li class="menu-item ">
-                                <a href="javascript:void(0)">
+                                <a href="/Home/Index">
                                     Home 
                                 </a>                                
                             </li>
                             <!-- Shop -->
                             <li class="menu-item ">
-                                <a href="javascript:void(0)">
+                                <a href="/Book/Index">
                                     shop 
                                 </a>                             
 
                             </li>
-                            <!-- Pages -->
-                            <li class="menu-item ">
-                                <a href="javascript:void(0)">
-                                    Pages 
-                                </a>                             
-                            </li>
-                            <!-- Blog -->
-                            <li class="menu-item  ">
-                                <a href="javascript:void(0)">
-                                    Blog 
-                                </a>                              
-                            </li>
+                            <!-- Pages -->                           
                             <li class="menu-item">
                                 <a href="contact.html">Contact</a>
                             </li>
@@ -92,50 +81,15 @@
                             {                                
                             }
                             else
-                            {
+                            {<a href="/Cart/Index">
                                 <div class="cart-block">
-                                    <div class="cart-total">
-                                        <span class="text-number">
-                                            1
-                                        </span>
+                                    <div class="cart-total">                                        
                                         <span class="text-item">
-                                            Shopping Cart
-                                        </span>
-                                        <span class="price">
-                                            £0.00
-                                            <i class="fas fa-chevron-down"></i>
-                                        </span>
-                                    </div>
-                                    <div class="cart-dropdown-block">
-                                        <div class=" single-cart-block ">
-                                            <div class="cart-product">
-                                                <a href="product-details.html" class="image">
-                                                    <img src="image/products/cart-product-1.jpg" alt="">
-                                                </a>
-                                                <div class="content">
-                                                    <h3 class="title">
-                                                        <a href="product-details.html">
-                                                            Kodak PIXPRO
-                                                            Astro Zoom AZ421 16 MP
-                                                        </a>
-                                                    </h3>
-                                                    <p class="price"><span class="qty">1 ×</span> £87.34</p>
-                                                    <button class="cross-btn"><i class="fas fa-times"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" single-cart-block ">
-                                            <div class="btn-block">
-                                                <a href="cart.html" class="btn">
-                                                    View Cart <i class="fas fa-chevron-right"></i>
-                                                </a>
-                                                <a href="checkout.html" class="btn btn--primary">
-                                                    Check Out <i class="fas fa-chevron-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            Your Cart
+                                        </span>                                        
+                                    </div>                                  
                                 </div>
+                            </a>
                             }                         
                             
                         </div>
