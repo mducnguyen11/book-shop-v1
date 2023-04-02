@@ -42,13 +42,14 @@ namespace Bookshop_v5.Models.Domain
 
                 if (!context.Book.Any())
                 {
+                    string url = "https://salt.tikicdn.com/cache/750x750/ts/product/97/61/91/a9b293f184d4dbbc2afc416b539f2bca.jpg.webp";
                     var books = new List<Book>
                     {
-                        new Book { Price = 200, Name = "Harry Potter and the Philosopher's Stone", Description = "The first book in the Harry Potter series", GenreId = 1, AuthorId = 1 },
-                        new Book { Price = 250, Name = "The Da Vinci Code", Description = "A thriller novel by Dan Brown", GenreId = 4, AuthorId = 2 },
-                        new Book { Price = 100, Name = "The Shining", Description = "A horror novel by Stephen King", GenreId = 1, AuthorId = 3 },
-                        new Book { Price = 120, Name = "Murder on the Orient Express", Description = "A detective novel by Agatha Christie", GenreId = 4, AuthorId = 4 },
-                        new Book { Price = 290,  Name = "The Notebook", Description = "A romantic novel by Nicholas Sparks", GenreId = 5, AuthorId = 5 }
+                        new Book { Image = url  ,OldPrice = 220 , Price = 200, Name = "Harry Potter and the Philosopher's Stone", Description = "The first book in the Harry Potter series", GenreId = 1, AuthorId = 1 },
+                        new Book { Image = url  , OldPrice = 270 , Price = 250, Name = "The Da Vinci Code", Description = "A thriller novel by Dan Brown", GenreId = 4, AuthorId = 2 },
+                        new Book { Image = url  , OldPrice = 200 , Price = 100, Name = "The Shining", Description = "A horror novel by Stephen King", GenreId = 1, AuthorId = 3 },
+                        new Book {Image = url  , OldPrice = 170 , Price = 120, Name = "Murder on the Orient Express", Description = "A detective novel by Agatha Christie", GenreId = 4, AuthorId = 4 },
+                        new Book {Image = url  , OldPrice = 320 , Price = 290,  Name = "The Notebook", Description = "A romantic novel by Nicholas Sparks", GenreId = 5, AuthorId = 5 }
                     };
                     context.Book.AddRange(books);
                     context.SaveChanges();

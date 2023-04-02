@@ -2,6 +2,7 @@
 {
     public class Book
     {
+        public string Image { get; set; }
         public int Id { get; set; }
 
         public string Name { get; set; }   
@@ -15,6 +16,15 @@
 
         public Author Author { get; set; }
 
+        public int OldPrice { get; set; }
+
         public int Price { get; set; }
+
+        public int SoldQuantity { get; set; }   
+        public Book()   
+        {
+            SoldQuantity = 0;
+        }
+
     }
 }
