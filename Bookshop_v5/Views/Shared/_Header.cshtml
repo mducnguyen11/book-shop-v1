@@ -35,7 +35,7 @@
                                 <a href="javascript:void(0)">
                                     shop 
                                 </a>                             
-                               
+
                             </li>
                             <!-- Pages -->
                             <li class="menu-item ">
@@ -53,13 +53,22 @@
                                 <a href="contact.html">Contact</a>
                             </li>
                             @if (string.IsNullOrEmpty(username))
-                             {               
-                             }
-                             else
-                             {
-                             <li class="menu-item">
-                                    <a href="/Auth/Logout"><i class="fas fa-sign-out-alt"></i>  </a>
-                            </li>
+                            {  
+                                         <li class="menu-item">
+                                        <a href="/Auth/Login">Login</a>
+                                    </li>
+                                     <li class="menu-item">
+                                        <a href="/Auth/Register">Register</a>
+                                    </li>             
+                            }
+                            else
+                            {
+                                     <li class="menu-item">
+                                            <a href="/Auth/Profile">@username</a>
+                                     </li>
+                                     <li class="menu-item">
+                                            <a href="/Auth/Logout"><i class="fas fa-sign-out-alt"></i>  </a>
+                                    </li>
                             }
                         </ul>
                     </div>
@@ -80,11 +89,7 @@
                     <div class="main-navigation flex-lg-right">
                         <div class="cart-widget">
                             @if (string.IsNullOrEmpty(username))
-                            {
-                                <div class="login-block">
-                                    <a href="/Auth/Login" class="font-weight-bold">Login</a> <br>
-                                    <span>or</span><a href="/Auth/Register">Register</a>
-                                </div>
+                            {                                
                             }
                             else
                             {
