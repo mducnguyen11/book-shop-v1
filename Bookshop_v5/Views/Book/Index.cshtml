@@ -3,64 +3,58 @@
 
 @model PaginationViewModel<Book>
 
-<div class="row">
-    <div class="col-md-3">
-        <h4>Genres</h4>
-        <ul class="list-group">
-            <li class="list-group-item @if(Model.RouteValues["genre"] == 0){
-            <text>active</text>
-}"><a href="/Book/Index?genreId=0">All Genres</a></li>
-            @foreach (var genre in Model.Genres)
-            {
-                <li class="list-group-item @if(Model.RouteValues["genre"] == genre.Id){
-            <text>active</text>
-}"><a href="/Book/Index?genreId=@genre.Id">@genre.Name</a></li>
-            }
-        </ul>
-    </div>
-    <div class="col-md-9">
-        <h4>Books</h4>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Genre</th>
-                </tr>
-            </thead>
-            <tbody>
-    @foreach (var book in Model.Items)
-    {
-        <tr>
-            <td><a href="@Url.Action("Details", "Book", new { id = book.Id })">@book.Name</a></td>
-            <td>@book.Author.Name</td>
-            <td>@book.Genre.Name</td>
-        </tr>
-    }
-</tbody>
-
-        </table>
-        <div class="pagination">
-            @if (Model.TotalPages > 1)
-            {
-                <ul>
-                    @if (Model.Page > 1)
-                    {
-                        <li><a href="/Book/Index?genreId=@Model.RouteValues["genre"]&amp;page=@(Model.Page - 1)&amp;pageSize=@Model.PageSize">Previous</a></li>
-                    }
-                    @for (int i = 1; i <= Model.TotalPages; i++)
-                    {
-                        <li class="@if(Model.Page == i){
-                <text>active</text>
-}"><a href="/Book/Index?genreId=@Model.RouteValues["genre"]&amp;page=@i&amp;pageSize=@Model.PageSize">@i</a></li>
-                    }
-                    @if (Model.Page < Model.TotalPages)
-                    {
-                        <li><a href="/Book/Index?genreId=@Model.RouteValues["genre"]&amp;page=@(Model.Page + 1)&amp;pageSize=@Model.PageSize">Next</a></li>
-                    }
-                </ul>
-            }
-        </div>
-    </div>
+<div class="header-bottom pb--10">
+   <div class="row align-items-center">
+      <div class="col-lg-4">
+         <nav class="category-nav   ">
+            <div>
+               <a href="javascript:void(0)" class="category-trigger"><i
+                  class="fa fa-bars"></i>Browse
+               categories <i style="margin-left: 50px;" class="fas fa-chevron-down"></i>
+               </a>
+               <ul class="category-menu">
+                  <li class="cat-item" @if(Model.RouteValues["genre"] == 0){
+                  <text>category-active</text>
+                  }"><a href="/Book/Index?genreId=0">All Genres</a></li>  
+                  @foreach (var genre in Model.Genres)
+                  {
+                  <li class="cat-item @if(Model.RouteValues["genre"] == genre.Id){
+                  <text>category-active</text>
+                  }"><a href="/Book/Index?genreId=@genre.Id">@genre.Name</a></li>
+                  }
+               </ul>
+            </div>
+         </nav>
+      </div>
+   </div>
 </div>
-
+<div class="shop-product-wrap grid with-pagination row space-db--30 shop-border">
+   @foreach (var book in Model.Items){		
+   <div class="col-lg-4 col-sm-6">
+      <div class="product-card">
+         <div class="product-grid-content">
+            <div class="product-header">
+               <a href="@Url.Action("Details", "Book", new { id = book.Id })" class="author">
+               @book.Author.Name
+               </a>
+               <h3><a href="@Url.Action("Details", "Book", new { id = book.Id })">Here Is A Quick Cure For Book</a></h3>
+            </div>
+            <div class="product-card--body">
+               <div class="card-image">
+                  <img src="@book.Image" alt="">
+                  <div class="hover-contents">
+                     <a href="@Url.Action("Details", "Book", new { id = book.Id })" class="hover-image">
+                     <img src="@book.Image" alt="">
+                     </a>							
+                  </div>
+               </div>
+               <div class="price-block">
+                  <span class="price">@book.OldPrice</span>
+                  <del class="price-old">@book.Price</del>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   }
+</div>

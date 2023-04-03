@@ -150,3 +150,63 @@ string username = User.Identity.Name;
    </div>
    </div>
 </section>
+
+
+
+
+<!--=================================
+           CHILDREN’S BOOKS
+           ===================================== -->
+<section class="section-margin">
+    <div class="container">
+        <div class="section-title section-title--bordered">
+            <h2>Science fiction’s books</h2>
+        </div>
+        <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row"
+             data-slick-setting='{
+                                                "autoplay": true,
+                                                "autoplaySpeed": 8000,
+                                                "slidesToShow":3,
+                                                "rows":2,
+                                                "dots":true
+                                            }' data-slick-responsive='[
+                                                {"breakpoint":1200, "settings": {"slidesToShow": 2} },
+                                                {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                                {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                                                {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                                {"breakpoint":490, "settings": {"slidesToShow": 1} }
+                                            ]'>
+
+
+            @foreach (var book in ViewBag.SciFi)
+                  {
+                  <div class="single-slide">
+                     <div class="product-card card-style-list">
+                        <div class="card-image">
+                           <img src="@book.Image" alt="">
+                        </div>
+                        <div class="product-card--body">
+                           <div class="product-header">
+                              <a href="#" class="author">
+                              @book.Author
+                              </a>
+                              <h3>
+                                 <a href="@Url.Action("Details", "Book", new { id = book.Id })">
+                                 @book.Name
+                                 </a>
+                              </h3>
+                           </div>
+                           <div class="price-block">
+                              <span class="price">£@book.Price</span>         
+                              <del class="price-old">£@book.OldPrice</del>
+                              <span class="price-discount">20%</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  }   
+
+
+        </div>
+    </div>
+</section>

@@ -22800,27 +22800,16 @@ input[type=number] {
   margin-right: 8px;
   font-size: 16px;
 }
-.category-nav .category-trigger:before {
-  position: absolute;
-  content: "";
-  font-size: 12px;
-  right: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  top: 0;
-  margin-right: 25px;
+.category-active {
+    background-color: #62ab00;
+}
+.category-active a {
+        color: #ffffff !important;
 }
 .category-nav.show .category-menu {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: visible;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: visible;
 }
 .category-nav.white-nav .category-trigger {
   color: #fff;
