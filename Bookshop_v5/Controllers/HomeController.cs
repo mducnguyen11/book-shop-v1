@@ -29,9 +29,19 @@ namespace Bookshop_v5.Controllers
 			return View();
         }
 
-        public IActionResult AboutUs()
+        [HttpGet]
+        public IActionResult Contact()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Contact(Contact model)
+        {
+            
+
+            return View(model);
         }
 
     }

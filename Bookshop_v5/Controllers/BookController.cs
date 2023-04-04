@@ -16,8 +16,8 @@ namespace Bookshop_v5.Controllers
         }
         public IActionResult Index(int genreId, int page = 1, int pageSize = 2)
         {
-            
-            var genres = _context.Genre.ToList();
+		
+			var genres = _context.Genre.ToList();
             IQueryable<Book> books = _context.Book.Include(b => b.Genre).Include(a => a.Author);
 
             // Lọc theo thể loại nếu được chỉ định

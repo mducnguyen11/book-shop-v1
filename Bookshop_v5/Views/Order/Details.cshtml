@@ -1,0 +1,51 @@
+﻿@model Bookshop_v5.Models.Domain.Order
+
+<main class="cart-page-main-block inner-page-sec-padding-bottom">
+	<div class="cart_area cart-area-padding  ">
+		<div class="container">
+			<div class="page-section-title">
+				<h1>Order history</h1>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<form action="#" class="">
+						<!-- Cart Table -->
+						<div class="cart-table table-responsive mb--40">
+							<table class="table">
+								<!-- Head Row -->
+								<thead>
+									<tr>			
+										<th class="pro-thumbnail">Image</th>
+												<th class="pro-title">Product</th>
+												<th class="pro-price">Price</th>
+												<th class="pro-quantity">Quantity</th>
+												<th class="pro-subtotal">Total</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- Product Row -->
+									<!-- Product Row -->
+									@foreach (var item in Model.Items)
+									{
+										<tr>
+											<td class="pro-thumbnail"><a href="#"><img
+															src="@item.Book.Image" alt="Product"></a></td>
+											<td class="pro-title"><a href="#">@item.Book.Name</a></td>
+											<td class="pro-price"><span>@item.Book.Price</span></td>
+												<td class="pro-quantity">
+													<div class="pro-qty">
+														@item.Quantity
+													</div>
+												</td>
+											<td class="pro-subtotal"><span>$@item.UnitPrice</span></td>
+										</tr>
+									}
+								</tbody>
+							</table>							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

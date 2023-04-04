@@ -1,7 +1,6 @@
 ﻿using Bookshop_v5.Interfaces;
 using Bookshop_v5.Models.Domain;
 using Bookshop_v5.Models.DTO;
-using Bookshop_v5.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,22 +43,32 @@ namespace Bookshop_v5.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        public async Task<IActionResult> Register()
+        public IActionResult RegisterSuccess()
         {
-            var model = new RegistrationModel
+            return View();
+        }
+
+        [HttpGet]
+		public IActionResult Register()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Register(RegistrationModel registrationModel)
+        {
+            registrationModel.Role = "User";
+			 // if you want to register with user , Change Role="User"
+			var result = await authService.RegisterAsync(registrationModel, _context);
+            if(result.StatusCode == 1)
             {
-               Email = "ducadmin@gmail.com",
-                Username = "admin",
-                Name = "Duc NM",
-                Password = "Admin@123",             
-                Role = "Admin",
-                Birthday= DateTime.Now,
-                Address = "Ha noi",
-                Gender ="Male"
-            };
-            // if you want to register with user , Change Role="User"
-            var result = await authService.RegisterAsync(model, _context);
-            return Ok(result.Message);
+                return RedirectToAction("RegisterSuccess", "Auth");
+            }
+            else
+            {
+				TempData["msg"] = "Could not register .. !!!pls check again";
+				return RedirectToAction(nameof(Register));
+			}
         }
 
 
