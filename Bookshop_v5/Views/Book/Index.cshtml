@@ -3,7 +3,7 @@
 
 @model PaginationViewModel<Book>
 
-<div class="header-bottom pb--10">
+<div class="header-bottom pb--30">
    <div class="row align-items-center">
       <div class="col-lg-4">
          <nav class="category-nav   ">
@@ -15,17 +15,17 @@
                <ul class="category-menu">
                   <li class="cat-item" @if(Model.RouteValues["genre"] == 0){
                   <text>category-active</text>
-                  }"><a href="/Book/Index?genreId=0">All Genres</a></li>  
-                  @foreach (var genre in Model.Genres)
+                  }"><a  href="@Url.Action("Index", new { page = Model.Page, pageSize = Model.PageSize , genreId = 0, search = Model.Search  })" >All Genres</a></li>
+                        @foreach (var genre in Model.Genres)
                   {
                   <li class="cat-item @if(Model.RouteValues["genre"] == genre.Id){
                   <text>category-active</text>
-                  }"><a href="/Book/Index?genreId=@genre.Id">@genre.Name</a></li>
+                  }"><a  href="@Url.Action("Index", new { page = Model.Page, pageSize = Model.PageSize , genreId = genre.Id ,search = Model.Search }) ">@genre.Name</a></li>
                   }
                </ul>
             </div>
          </nav>
-      </div>
+      </div>      
    </div>
 </div>
 <div class="shop-product-wrap grid with-pagination row space-db--30 shop-border">
@@ -37,7 +37,7 @@
                <a href="@Url.Action("Details", "Book", new { id = book.Id })" class="author">
                @book.Author.Name
                </a>
-               <h3><a href="@Url.Action("Details", "Book", new { id = book.Id })">Here Is A Quick Cure For Book</a></h3>
+               <h3><a href="@Url.Action("Details", "Book", new { id = book.Id })">@book.Name</a></h3>
             </div>
             <div class="product-card--body">
                <div class="card-image">
@@ -58,3 +58,23 @@
    </div>
    }
 </div>
+<ul class="pagination">
+    @if (Model.Page > 1)
+    {
+    <li class="page-item">
+        <a class="page-link" href="@Url.Action("Index", new { page = Model.Page - 1, pageSize = Model.PageSize,search = Model.Search , genreId = Model.RouteValues["genre"] })">Previous</a>
+    </li>
+    }
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+    <li class="page-item @(Model.Page == i ? "active" : "")">
+        <a class="page-link" href="@Url.Action("Index", new { page = i, pageSize = Model.PageSize ,search = Model.Search , genreId = Model.RouteValues["genre"] }) ">@i</a>
+    </li>
+    }
+    @if (Model.Page < Model.TotalPages)
+    {
+    <li class="page-item">
+        <a class="page-link" href="@Url.Action("Index", new { page = Model.Page + 1, pageSize = Model.PageSize,search = Model.Search , genreId = Model.RouteValues["genre"]})">Next</a>
+    </li>
+    }
+</ul>

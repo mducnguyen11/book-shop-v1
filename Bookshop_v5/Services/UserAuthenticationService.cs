@@ -115,19 +115,24 @@ namespace Bookshop_v5.Services
                 }
                 status.StatusCode = 1;
                 status.Message = "Logged in successfully";
-            }
+				if (userRoles.Contains("Admin"))
+				{
+					status.StatusCode = 2;
+					status.Message = "Logged in successfully as Admin";
+				}
+			}
             else if (signInResult.IsLockedOut)
             {
                 status.StatusCode = 0;
                 status.Message = "User is locked out";
-            }
+            }   
             else
             {
                 status.StatusCode = 0;
                 status.Message = "Error on logging in";
-            }
+            }			
 
-            return status;
+			return status;
         }
 
         public async Task LogoutAsync()

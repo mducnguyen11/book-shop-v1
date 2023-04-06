@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "_Admin"; // hoặc Layout = "";
+}
+
+@using Bookshop_v5.Models.DTO;
+@model PaginationViewModel<Bookshop_v5.Models.Domain.Order>
+
+<main class="cart-page-main-block inner-page-sec-padding-bottom">
+	<div class="cart_area cart-area-padding  ">
+		<div class="container">
+			<div class="page-section-title">
+				<h1>Order list</h1>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<form action="#" class="">
+						<!-- Cart Table -->
+						<div class="cart-table table-responsive mb--40">
+							<table class="table">
+								<!-- Head Row -->
+								<thead>
+									<tr>
+										<th class="pro-title">Date</th>
+										<th class="pro-price">Total Price</th>
+										<th class="pro-quantity">Status</th>
+										<th class="pro-quantity"></th>
+										<th class="pro-quantity"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- Product Row -->
+									<!-- Product Row -->
+									@foreach (var order in Model.Items)
+									{
+										<tr>
+											<td class="pro-title"><a href="@Url.Action("Details", "Order", new { id = order.Id })">@order.DateCreated.ToShortDateString()</a></td>
+											<td class="pro-price"><span>$@order.TotalPrice</span></td>
+											<td class="pro-subtotal"><span>@order.OrderStatus</span></td>
+											<td class="pro-subtotal">
+												<a href="@Url.Action("AcceptOrder", "Admin", new { id = order.Id })">Xác nhận</a>									</td>
+											<td class="pro-subtotal">
+												<a href="@Url.Action("RejectOrder", "Admin", new { id = order.Id })">Từ chối</a>
+											</td>
+										</tr>
+									}
+								</tbody>
+							</table>
+							<nav>
+								<ul class="pagination">
+									@if (Model.Page > 1)
+									{
+										<li class="page-item">
+											<a class="page-link" href="@Url.Action("Index", new { page = Model.Page - 1, pageSize = Model.PageSize })">Previous</a>
+										</li>
+									}
+									@for (int i = 1; i <= Model.TotalPages; i++)
+									{
+										<li class="page-item @(Model.Page == i ? "active" : "")">
+											<a class="page-link" href="@Url.Action("Index", new { page = i, pageSize = Model.PageSize })">@i</a>
+										</li>
+									}
+									@if (Model.Page < Model.TotalPages)
+									{
+										<li class="page-item">
+											<a class="page-link" href="@Url.Action("Index", new { page = Model.Page + 1, pageSize = Model.PageSize })">Next</a>
+										</li>
+									}
+								</ul>
+							</nav>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

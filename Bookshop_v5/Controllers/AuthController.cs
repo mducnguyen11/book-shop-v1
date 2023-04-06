@@ -32,8 +32,16 @@ namespace Bookshop_v5.Controllers
                 return RedirectToAction("Index", "Home");
             else
             {
-                TempData["msg"] = "Could not logged in..";
-                return RedirectToAction(nameof(Login));
+                if(result.StatusCode == 2)
+                {
+					return RedirectToAction("Index", "Admin");
+				}
+                else
+                {
+					TempData["msg"] = "Could not logged in..";
+					return RedirectToAction(nameof(Login));
+				}
+                
             }
         }
 

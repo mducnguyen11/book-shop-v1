@@ -38,17 +38,17 @@ namespace Bookshop_v5.Controllers
 			return View(paginationViewModel);
 		}
 
-		public IActionResult Details(int id)
-		{
-			var order = _context.Order.Include(o => o.Items).FirstOrDefault(o => o.Id == id);
-
-			if (order == null)
+			public IActionResult Details(int id)
 			{
-				return NotFound();
-			}
+				var order = _context.Order.Include(o => o.Items).ThenInclude(i => i.Book).FirstOrDefault(o => o.Id == id);
 
-			return View(order);
-		}
+				if (order == null)
+				{
+					return NotFound();
+				}
+
+				return View(order);
+			}
 
 	}
 }

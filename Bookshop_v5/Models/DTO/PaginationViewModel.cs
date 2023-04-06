@@ -18,5 +18,7 @@ namespace Bookshop_v5.Models.DTO
         public IDictionary<string, int> RouteValues { get; set; }
 
         public IEnumerable<Genre> Genres { get; set; }
-    }
+
+		public string? Search { get; set; }
+	}
 }

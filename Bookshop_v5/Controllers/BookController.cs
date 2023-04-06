@@ -14,7 +14,7 @@ namespace Bookshop_v5.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int genreId, int page = 1, int pageSize = 2)
+        public IActionResult Index(int genreId, int page = 1, int pageSize = 1, string search = "")
         {
 		
 			var genres = _context.Genre.ToList();
@@ -53,7 +53,7 @@ namespace Bookshop_v5.Controllers
                 { "genre", genreId }
                 },
                 Genres = genres,
-            };
+			};
 
             return View(model);
         }

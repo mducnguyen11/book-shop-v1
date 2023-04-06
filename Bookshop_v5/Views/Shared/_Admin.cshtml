@@ -1,22 +1,69 @@
-﻿<!DOCTYPE html>
-
+﻿@{
+    Layout = null; // hoặc Layout = "";
+}
+<!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Bookshop_v5.styles.css" asp-append-version="true" />
+    <title>Admin Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
 
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+            }
 
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
+
+        .main {
+            margin-left: 200px;
+            padding: 0px 10px;
+        }
+        .list-group-item.active a{
+            color: #fff
+        }
+
+    </style>
 </head>
+
 <body>
-    <div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#">Dashboard</a>
+        <a href="/Admin/Order">Order</a>       
+        <a href="/Admin/Book">Book</a>
+        <a href="#">Settings</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="main">
         @RenderBody()
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
 </body>
+
 </html>

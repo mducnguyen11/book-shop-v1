@@ -28493,3 +28493,8 @@ p.form-messege.error {
 .accordion .card .card-body {
   padding: 0 30px 30px;
 }
+
+.pagination{
+    justify-content : flex-end;
+    margin: 10px 0px 10px 0px;
+}

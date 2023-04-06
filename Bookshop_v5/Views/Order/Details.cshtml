@@ -4,7 +4,8 @@
 	<div class="cart_area cart-area-padding  ">
 		<div class="container">
 			<div class="page-section-title">
-				<h1>Order history</h1>
+				<h4>Ngày đặt hàng : @Model.DateCreated.ToShortDateString()</h4>
+				<h4>Total price : $@Model.TotalPrice</h4>
 			</div>
 			<div class="row">
 				<div class="col-12">
@@ -30,7 +31,7 @@
 										<tr>
 											<td class="pro-thumbnail"><a href="#"><img
 															src="@item.Book.Image" alt="Product"></a></td>
-											<td class="pro-title"><a href="#">@item.Book.Name</a></td>
+											<td class="pro-title"><a href="@Url.Action("Details", "Book", new { id = item.Book.Id })">@item.Book.Name</a></td>
 											<td class="pro-price"><span>@item.Book.Price</span></td>
 												<td class="pro-quantity">
 													<div class="pro-qty">
