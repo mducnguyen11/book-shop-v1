@@ -1,0 +1,75 @@
+﻿@using Bookshop_v5.Models.DTO;
+@model BookEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<h1>Edit Book</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" asp-action="EditBook" asp-route-id="@Model.Id" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">Description</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GenreId">Genre</label>
+                <select asp-for="GenreId" class="form-control">
+                    <option value="">-- Select Genre --</option>
+                    @foreach (var genre in Model.Genres)
+                    {
+                        {
+                    <option value="@genre.Id" selected=@(Model.GenreId == genre.Id ? true : false)>@genre.Name</option>
+            }
+                    }
+                </select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AuthorId">Author</label>
+                <select asp-for="AuthorId" class="form-control">
+                    <option value="">-- Select Author --</option>
+                    @foreach (var author in Model.Authors)
+                    {
+                        <option value="@author.Id" selected=@(Model.AuthorId == author.Id ? true : false)>@author.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="AuthorId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OldPrice">Old Price</label>
+                <input asp-for="OldPrice" class="form-control" />
+                <span asp-validation-for="OldPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price">Price</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image">Image</label>
+                <input type="text" asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-action="Book" asp-route-genreId="@Model.GenreId" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+</div>

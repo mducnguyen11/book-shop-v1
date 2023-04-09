@@ -1,15 +1,18 @@
 ﻿using Bookshop_v5.Interfaces;
+using Bookshop_v5.Models.Domain;
 using Bookshop_v5.Models.DTO;
-using Bookshop_v5.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bookshop_v5.Controllers
 {
     public class AuthController : Controller
     {
         private IUserAuthServices authService;
-       public AuthController(IUserAuthServices authService)
+        private readonly DatabaseContext _context;
+        public AuthController(DatabaseContext context, IUserAuthServices authService)
         {
+            _context = context;
             this.authService = authService;
         }
 
@@ -29,8 +32,16 @@ namespace Bookshop_v5.Controllers
                 return RedirectToAction("Index", "Home");
             else
             {
-                TempData["msg"] = "Could not logged in..";
-                return RedirectToAction(nameof(Login));
+                if(result.StatusCode == 2)
+                {
+					return RedirectToAction("Index", "Admin");
+				}
+                else
+                {
+					TempData["msg"] = "Could not logged in..";
+					return RedirectToAction(nameof(Login));
+				}
+                
             }
         }
 
@@ -40,22 +51,104 @@ namespace Bookshop_v5.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        public async Task<IActionResult> Register()
+        public IActionResult RegisterSuccess()
         {
-            var model = new RegistrationModel
+            return View();
+        }
+
+        [HttpGet]
+		public IActionResult Register()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Register(RegistrationModel registrationModel)
+        {
+            registrationModel.Role = "User";
+			 // if you want to register with user , Change Role="User"
+			var result = await authService.RegisterAsync(registrationModel, _context);
+            if(result.StatusCode == 1)
             {
-               Email = "ducadmin@gmail.com",
-                Username = "admin",
-                Name = "Duc NM",
-                Password = "Admin@123",             
-                Role = "Admin",
-                Birthday= DateTime.Now,
-                Address = "Ha noi",
-                Gender ="Male"
+                return RedirectToAction("RegisterSuccess", "Auth");
+            }
+            else
+            {
+				TempData["msg"] = "Could not register .. !!!pls check again";
+				return RedirectToAction(nameof(Register));
+			}
+        }
+
+
+        public async Task<IActionResult> Profile()
+        {
+            var user = await _context.Users
+                .SingleOrDefaultAsync(u => u.UserName == User.Identity.Name);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new ProfileModel
+            {
+                Name = user.Name,
+                Gender = user.Gender,
+                Address = user.Address,
+                Birthday = user.Birthday,
+                Email = user.Email,
             };
-            // if you want to register with user , Change Role="User"
-            var result = await authService.RegisterAsync(model);
-            return Ok(result.Message);
+
+            return View(model);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> EditProfile()
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == User.Identity.Name);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new ProfileModel
+            {
+                Name = user.Name,
+                Gender = user.Gender,
+                Address = user.Address,
+                Birthday = user.Birthday,
+                Email = user.Email,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(ProfileModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == User.Identity.Name);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.Name = model.Name;
+            user.Gender = model.Gender;
+            user.Address = model.Address;
+            user.Birthday = model.Birthday;                 
+
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Profile");
         }
     }
 }

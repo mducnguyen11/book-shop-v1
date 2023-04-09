@@ -15,13 +15,18 @@ namespace Bookshop_v5.Models.Domain
 
         public DbSet<Genre> Genre { get; set; }
 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //    {
-        //    base.OnModelCreating(modelBuilder);
+        public DbSet<Book> Book { get; set; }
+
+        public DbSet<Author> Author { get; set; }
 
 
-        //SeedData.SeedGenres(this);
-        //  }
+        public DbSet<Cart> Cart { get; set; }
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<CartItem> CartItem { get; set; }
+
+        public DbSet<OrderItem> OrderItem { get; set; }
+
 
 
 

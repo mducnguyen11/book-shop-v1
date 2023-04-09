@@ -3,8 +3,6 @@ Cách chạy database :
 mở nuget package console
 chạy lệnh :add-migration update
 chạy lệnh :update-database
-
-Done
-
-test edit read meeee
+test develop 1
+test 2
 

@@ -1,0 +1,36 @@
+﻿@model Bookshop_v5.Models.Domain.Cart
+
+<h2>Giỏ hàng của bạn</h2>
+
+@if (Model != null && Model.Items != null && Model.Items.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên sách</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Book.Name</td>
+                            <td>@item.Book.Price</td>
+                            <td>@item.Quantity</td>
+                            <td>@(item.Quantity * item.Book.Price)</td>
+                        </tr>
+            }
+                <tr>
+                    <td colspan="3"><strong>Tổng tiền:</strong></td>
+                    <td>@Model.TotalPrice</td>
+                </tr>
+            </tbody>
+        </table>
+}
+else
+{
+        <p>Không có sản phẩm nào trong giỏ hàng của bạn.</p>
+}

@@ -7,50 +7,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Bookshop_v5</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- 
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Bookshop_v5.styles.css" asp-append-version="true" />
+
+
+    -->
+    <link rel="stylesheet" href="~/css/plugins.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
     @RenderSection("styles", required: false)
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="...">
+    <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
 </head>
-<body>    
-   <div class=" header d-flex justify-content-between align-items-center">
-       <div class="header-item header-left">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPVvMV88ozDSWFkle7Yk_jkIX3SPXzvhRAAXW1yt-Q&s" />
-       </div>      
-            <div class=" header-item header-center d-flex justify-content-center align-items-center">
-                <a href="/Home/Index">Home</a>
-            <a href="/Home/Index">Books</a>
-            <a href="/Home/AboutUs">About us</a>
-            <a href="/Home/Index">Contact</a>
-            <a href="/Genre/Index">Genre List</a>
-            <a href="/Auth/Register">Init Admin User</a>
-        </div>     
-            <div class=" header-item header-right d-flex justify-content-end align-items-center">
-            @if (string.IsNullOrEmpty(username))
-            {
-                <a href="/Auth/Login">Đăng nhập</a>
-                <a href="/Auth/Register">Đăng ký</a>
-            }
-            else
-            {
-                <a href="/Auth/Login">Cart</a>
-                <a href="/Auth/Register">@username</a>
-                <a href="/Auth/Logout">Log out</a>
-            }
-           
-            </div>
-        </div>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    <footer>
-        Footer
-    </footer>
+<body>
+    <partial name="_Header" />
+    <div class="site-wrapper container" id="top">
+        @RenderBody()
+     </div>
+    <partial name="_Footer" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/ajax-mail.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-4cLlLEJgNg+O22X9Hlx+WvAJ+zPmkUE28JwRgsquj+TlF+Cv+MMWk2PLgyJ3hjKcuzsOZdd0m4wKj/MErvfv+A==" crossorigin="anonymous"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

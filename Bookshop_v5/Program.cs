@@ -63,6 +63,10 @@ using (var scope = app.Services.CreateScope())
         {
             SeedData.Initialize(services);
         }
+        else
+        {
+			SeedData.Initialize(services);
+		}
     }
     catch (Exception ex)
     {

@@ -21,6 +21,7 @@
     <Folder Include="Models\NewFolder\" />
     <Folder Include="wwwroot\css\homepagecss\" />
     <Folder Include="wwwroot\css\aboutuscss\" />
+    <Folder Include="wwwroot\image\" />
   </ItemGroup>
 
 </Project>

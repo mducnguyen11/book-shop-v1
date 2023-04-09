@@ -1,0 +1,54 @@
+﻿@using Bookshop_v5.Models.DTO;
+@model BookCreateViewModel
+
+<h2>Create New Book</h2>
+
+<form method="post" >
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GenreId"></label>
+        <select asp-for="GenreId" asp-items="@(new SelectList(Model.Genres, "Id", "Name"))" class="form-control">
+            <option value="">-- Select Genre --</option>
+        </select>
+        <span asp-validation-for="GenreId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AuthorId"></label>
+        <select asp-for="AuthorId" asp-items="@(new SelectList(Model.Authors, "Id", "Name"))" class="form-control">
+            <option value="">-- Select Author --</option>
+        </select>
+        <span asp-validation-for="AuthorId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OldPrice"></label>
+        <input asp-for="OldPrice" class="form-control" />
+        <span asp-validation-for="OldPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Image" class="control-label"></label>
+        <input asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

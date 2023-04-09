@@ -1,4 +1,5 @@
-﻿using Bookshop_v5.Models.DTO;
+﻿using Bookshop_v5.Models.Domain;
+using Bookshop_v5.Models.DTO;
 
 namespace Bookshop_v5.Interfaces
 {
@@ -6,6 +7,6 @@ namespace Bookshop_v5.Interfaces
     {
         Task<Status> LoginAsync(LoginModel model);
         Task LogoutAsync();
-        Task<Status> RegisterAsync(RegistrationModel model);
+        Task<Status> RegisterAsync(RegistrationModel model, DatabaseContext context);
     }
 }

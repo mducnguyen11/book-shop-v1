@@ -1,0 +1,86 @@
+﻿@model Bookshop_v5.Models.DTO.ProfileModel
+
+<style>
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        margin-top: 20px;
+    }
+
+    .col-md-6 {
+        padding: 0 15px;
+    }
+
+    .profile-card {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    .profile-card h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 0;
+    }
+
+    .profile-card p {
+        margin: 0;
+    }
+
+    .profile-card .btn {
+        margin-top: 10px;
+    }
+
+    .profile-card .list-group-item {
+        border-color: #ccc;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+</style>
+
+<div class="container">
+    <div class="profile-card">
+        <h2>@Model.Name's Profile</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Email:</strong>
+                        <p>@Model.Email</p>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Gender:</strong>
+                        <p>@Model.Gender</p>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Address:</strong>
+                        <p>@Model.Address</p>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Birthday:</strong>
+                        <p>@Model.Birthday.ToShortDateString()</p>
+                    </li>
+                </ul>               
+            </div>        
+            <div class="col-md-6">
+                <div class="row">
+                    <a href="/Auth/EditProfile" class="btn btn-primary">Edit profile</a>
+                    <a href="/Order/Index" class="btn btn-success">Order history</a>
+                </div></div>
+        </div>
+    </div>
+</div>

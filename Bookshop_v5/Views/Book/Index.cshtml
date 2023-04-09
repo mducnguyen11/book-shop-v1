@@ -1,0 +1,80 @@
+﻿@using Bookshop_v5.Models.Domain
+@using Bookshop_v5.Models.DTO
+
+@model PaginationViewModel<Book>
+
+<div class="header-bottom pb--30">
+   <div class="row align-items-center">
+      <div class="col-lg-4">
+         <nav class="category-nav   ">
+            <div>
+               <a href="javascript:void(0)" class="category-trigger"><i
+                  class="fa fa-bars"></i>Browse
+               categories <i style="margin-left: 50px;" class="fas fa-chevron-down"></i>
+               </a>
+               <ul class="category-menu">
+                  <li class="cat-item" @if(Model.RouteValues["genre"] == 0){
+                  <text>category-active</text>
+                  }"><a  href="@Url.Action("Index", new { page = Model.Page, pageSize = Model.PageSize , genreId = 0, search = Model.Search  })" >All Genres</a></li>
+                        @foreach (var genre in Model.Genres)
+                  {
+                  <li class="cat-item @if(Model.RouteValues["genre"] == genre.Id){
+                  <text>category-active</text>
+                  }"><a  href="@Url.Action("Index", new { page = Model.Page, pageSize = Model.PageSize , genreId = genre.Id ,search = Model.Search }) ">@genre.Name</a></li>
+                  }
+               </ul>
+            </div>
+         </nav>
+      </div>      
+   </div>
+</div>
+<div class="shop-product-wrap grid with-pagination row space-db--30 shop-border">
+   @foreach (var book in Model.Items){		
+   <div class="col-lg-4 col-sm-6">
+      <div class="product-card">
+         <div class="product-grid-content">
+            <div class="product-header">
+               <a href="@Url.Action("Details", "Book", new { id = book.Id })" class="author">
+               @book.Author.Name
+               </a>
+               <h3><a href="@Url.Action("Details", "Book", new { id = book.Id })">@book.Name</a></h3>
+            </div>
+            <div class="product-card--body">
+               <div class="card-image">
+                  <img src="@book.Image" alt="">
+                  <div class="hover-contents">
+                     <a href="@Url.Action("Details", "Book", new { id = book.Id })" class="hover-image">
+                     <img src="@book.Image" alt="">
+                     </a>							
+                  </div>
+               </div>
+               <div class="price-block">
+                  <span class="price">@book.OldPrice</span>
+                  <del class="price-old">@book.Price</del>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   }
+</div>
+<ul class="pagination">
+    @if (Model.Page > 1)
+    {
+    <li class="page-item">
+        <a class="page-link" href="@Url.Action("Index", new { page = Model.Page - 1, pageSize = Model.PageSize,search = Model.Search , genreId = Model.RouteValues["genre"] })">Previous</a>
+    </li>
+    }
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+    <li class="page-item @(Model.Page == i ? "active" : "")">
+        <a class="page-link" href="@Url.Action("Index", new { page = i, pageSize = Model.PageSize ,search = Model.Search , genreId = Model.RouteValues["genre"] }) ">@i</a>
+    </li>
+    }
+    @if (Model.Page < Model.TotalPages)
+    {
+    <li class="page-item">
+        <a class="page-link" href="@Url.Action("Index", new { page = Model.Page + 1, pageSize = Model.PageSize,search = Model.Search , genreId = Model.RouteValues["genre"]})">Next</a>
+    </li>
+    }
+</ul>
