@@ -6,10 +6,10 @@
 
 @model PaginationViewModel<Book>
 
-<div class="container">
+<div class="container mt-3">
 <div class="row">
     <div class="col-md-11"></div
-    <div class="col-md-1"><a href="/Admin/CreateBook">Thêm mới</a></div>
+    <div class="col-md-1"><a class="btn btn-success" style="margin-left: auto" href="/Admin/CreateBook">Thêm mới</a></div>
 </div>
 <div class="row">
     <div class="col-md-3">
@@ -18,12 +18,12 @@
             <li class="list-group-item @if(Model.RouteValues["genre"] == 0){
             <text>active</text>
 }"><a href="/Admin/Book?genreId=0">All Genres</a></li>
-            @foreach (var genre in Model.Genres)
-            {
-                <li class="list-group-item @if(Model.RouteValues["genre"] == genre.Id){
+                @foreach (var genre in Model.Genres)
+                {
+                    <li class="list-group-item @if(Model.RouteValues["genre"] == genre.Id){
             <text>active</text>
 }"><a href="/Admin/Book?genreId=@genre.Id">@genre.Name</a></li>
-            }
+                }
         </ul>
     </div>
     <div class="col-md-9">
@@ -39,40 +39,44 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var book in Model.Items)
-                {
-                    <tr>
-                        <td><a href="@Url.Action("Details", "Book", new { id = book.Id })">@book.Name</a></td>
-                        <td>@book.Author.Name</td>
-                        <td>@book.Genre.Name</td>
-                        <td><a href="@Url.Action("EditBook","Admin", new { id = book.Id })" >Chỉnh sửa</a></td>
-                        <td><a href="@Url.Action("DeleteBook","Admin", new { id = book.Id })" >Xóa</a></td>
-                    </tr>
-                }
+                    @foreach (var book in Model.Items)
+
+                    {
+                        <tr>
+                            <td><a href="@Url.Action("Details", "Book", new { id = book.Id })">@book.Name</a></td>
+                            <td>@book.Author.Name</td>
+                            <td>@book.Genre.Name</td>
+                            <td><a class="btn btn-primary" href="@Url.Action("EditBook","Admin", new { id = book.Id })" >Chỉnh sửa</a></td>
+                            <td><a class="btn btn-danger" href="@Url.Action("DeleteBook","Admin", new { id = book.Id })" >Xóa</a></td>
+                        </tr>
+                    }
             </tbody>
 
         </table>
         <ul class="pagination">
-    @if (Model.Page > 1)
-    {
-    <li class="page-item">
-                    <a class="page-link" href="/Admin/Book?genreId=@Model.RouteValues["genre"]&amp;page=@(Model.Page - 1)&amp;pageSize=@Model.PageSize">Previous</a>
-    </li>
-    }
-    @for (int i = 1; i <= Model.TotalPages; i++)
-    {
-    <li class="page-item @(Model.Page == i ? "active" : "")">
-                    <a class="page-link" href="/Admin/Book?genreId=@Model.RouteValues["genre"]&amp;page=@i&amp;pageSize=@Model.PageSize">@i</a>
-    </li>
-    }
-    @if (Model.Page < Model.TotalPages)
-    {
-    <li class="page-item">
-                    <a class="page-link" href="/Admin/Book?genreId=@Model.RouteValues["genre"]&amp;page=@(Model.Page + 1)&amp;pageSize=@Model.PageSize">Next</a>
-    </li>
-    }
+                @if (Model.Page > 1)
+
+                {
+        <li class="page-item">
+                        <a class="page-link" href="/Admin/Book?genreId=@Model.RouteValues["genre"]&amp;page=@(Model.Page - 1)&amp;pageSize=@Model.PageSize">Previous</a>
+        </li>
+                }
+                @for (int i = 1; i <= Model.TotalPages; i++)
+
+                {
+        <li class="page-item @(Model.Page == i ? "active" : "")">
+                        <a class="page-link" href="/Admin/Book?genreId=@Model.RouteValues["genre"]&amp;page=@i&amp;pageSize=@Model.PageSize">@i</a>
+        </li>
+                }
+                @if (Model.Page < Model.TotalPages)
+
+                {
+        <li class="page-item">
+                        <a class="page-link" href="/Admin/Book?genreId=@Model.RouteValues["genre"]&amp;page=@(Model.Page + 1)&amp;pageSize=@Model.PageSize">Next</a>
+        </li>
+                }
 </ul>
-        
+
     </div>
 </div>
 </div>

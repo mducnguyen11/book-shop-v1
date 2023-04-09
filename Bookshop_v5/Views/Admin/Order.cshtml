@@ -37,9 +37,10 @@
 											<td class="pro-price"><span>$@order.TotalPrice</span></td>
 											<td class="pro-subtotal"><span>@order.OrderStatus</span></td>
 											<td class="pro-subtotal">
-												<a href="@Url.Action("AcceptOrder", "Admin", new { id = order.Id })">Xác nhận</a>									</td>
+												<a class="btn btn-success" href="@Url.Action("AcceptOrder", "Admin", new { id = order.Id })">Xác nhận</a>
+											</td>
 											<td class="pro-subtotal">
-												<a href="@Url.Action("RejectOrder", "Admin", new { id = order.Id })">Từ chối</a>
+												<a class="btn btn-danger" href="@Url.Action("RejectOrder", "Admin", new { id = order.Id })">Từ chối</a>
 											</td>
 										</tr>
 									}

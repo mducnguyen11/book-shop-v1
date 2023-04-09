@@ -20,13 +20,19 @@ namespace Bookshop_v5.Controllers
         {
             var books = _context.Book.OrderByDescending(b => b.SoldQuantity).Take(4).ToList();
             ViewBag.TopSeller = books;
-			var sciFiBooks = _context.Book.Take(5).ToList();
-            // Where(b => b.Genre.Name == "Science fiction")
+			var sciFiBooks = _context.Book.Where(b => b.Genre.Name == "Science fiction").Take(5).ToList();
+			// 
 
+			var nonFiBooks = _context.Book.Where(b => b.Genre.Name == "Non-fiction").Take(5).ToList();
+            var Mysterys = _context.Book.Where(b => b.Genre.Name == "Mystery").Take(5).ToList();
+            var Romances = _context.Book.Where(b => b.Genre.Name == "Romance").Take(5).ToList();
 
             ViewBag.SciFi = sciFiBooks;
+		    ViewBag.NonFi = sciFiBooks;
+            ViewBag.Mysterys = Mysterys;
+            ViewBag.Romances = Romances;
 
-			return View();
+            return View();
         }
 
         [HttpGet]

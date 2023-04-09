@@ -14,10 +14,10 @@ namespace Bookshop_v5.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int genreId, int page = 1, int pageSize = 1, string search = "")
+        public IActionResult Index(int genreId, int page = 1, int pageSize = 7, string search = "")
         {
-		
-			var genres = _context.Genre.ToList();
+
+            var genres = _context.Genre.ToList();
             IQueryable<Book> books = _context.Book.Include(b => b.Genre).Include(a => a.Author);
 
             // Lọc theo thể loại nếu được chỉ định
@@ -53,7 +53,7 @@ namespace Bookshop_v5.Controllers
                 { "genre", genreId }
                 },
                 Genres = genres,
-			};
+            };
 
             return View(model);
         }
