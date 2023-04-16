@@ -32,16 +32,16 @@ namespace Bookshop_v5.Controllers
                 return RedirectToAction("Index", "Home");
             else
             {
-                if(result.StatusCode == 2)
+                if (result.StatusCode == 2)
                 {
-					return RedirectToAction("Index", "Admin");
-				}
+                    return RedirectToAction("Index", "Admin");
+                }
                 else
                 {
-					TempData["msg"] = "Could not logged in..";
-					return RedirectToAction(nameof(Login));
-				}
-                
+                    TempData["msg"] = "Could not logged in..";
+                    return RedirectToAction(nameof(Login));
+                }
+
             }
         }
 
@@ -57,26 +57,26 @@ namespace Bookshop_v5.Controllers
         }
 
         [HttpGet]
-		public IActionResult Register()
-		{
-			return View();
-		}
+        public IActionResult Register()
+        {
+            return View();
+        }
 
-		[HttpPost]
-		public async Task<IActionResult> Register(RegistrationModel registrationModel)
+        [HttpPost]
+        public async Task<IActionResult> Register(RegistrationModel registrationModel)
         {
             registrationModel.Role = "User";
-			 // if you want to register with user , Change Role="User"
-			var result = await authService.RegisterAsync(registrationModel, _context);
-            if(result.StatusCode == 1)
+            // if you want to register with user , Change Role="User"
+            var result = await authService.RegisterAsync(registrationModel, _context);
+            if (result.StatusCode == 1)
             {
                 return RedirectToAction("RegisterSuccess", "Auth");
             }
             else
             {
-				TempData["msg"] = "Could not register .. !!!pls check again";
-				return RedirectToAction(nameof(Register));
-			}
+                TempData["msg"] = "Could not register .. !!!pls check again";
+                return RedirectToAction(nameof(Register));
+            }
         }
 
 
@@ -143,7 +143,7 @@ namespace Bookshop_v5.Controllers
             user.Name = model.Name;
             user.Gender = model.Gender;
             user.Address = model.Address;
-            user.Birthday = model.Birthday;                 
+            user.Birthday = model.Birthday;
 
             _context.Update(user);
             await _context.SaveChangesAsync();
