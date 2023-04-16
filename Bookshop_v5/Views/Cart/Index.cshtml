@@ -2,7 +2,7 @@
 
 <h2>Giỏ hàng của bạn</h2>
 
-@if (Model != null && Model.Items != null && Model.Items.Count > 0)
+@if( ViewBag.CartItems.Count > 0)
 {
     <table class="table">
         <thead>
@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Items)
+            @foreach (var item in ViewBag.CartItems)
             {
                 <tr>
                     <td>@item.Book.Name</td>
@@ -25,10 +25,14 @@
             }
                 <tr>
                     <td colspan="3"><strong>Tổng tiền:</strong></td>
-                    <td>@Model.TotalPrice</td>
+                <td>@ViewBag.TotalPrice</td>
                 </tr>
             </tbody>
         </table>
+
+    <form method="post" action="@Url.Action("ConvertCartToOrder", "Cart")">
+        <button type="submit" class="btn btn-primary">Order</button>
+    </form>
 }
 else
 {
