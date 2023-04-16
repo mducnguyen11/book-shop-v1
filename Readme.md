@@ -6,4 +6,3 @@ chạy lệnh :update-database
 test develop 1
 test 2
 
-Done
